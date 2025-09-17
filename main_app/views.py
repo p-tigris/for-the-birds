@@ -4,6 +4,8 @@ from django.contrib.auth.views import LoginView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 
+from. models import Location
+
 # Create your views here.
 class Home(LoginView):
     template_name = 'home.html'
@@ -20,3 +22,8 @@ def signup(request):
             error_message = 'Invalid sign up - try again'
     form = UserCreationForm()
     return render(request, 'signup.html', { 'form': form, 'error_message': error_message })
+
+def locations_index(request):
+    locations = Location.objects.all()
+
+    return render(request, 'locations/index.html', { 'locations': locations })
