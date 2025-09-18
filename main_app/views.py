@@ -4,7 +4,9 @@ from django.contrib.auth.views import LoginView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 
-from. models import Location
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+
+from .models import Location
 
 # Create your views here.
 class Home(LoginView):
@@ -27,3 +29,12 @@ def locations_index(request):
     locations = Location.objects.all()
 
     return render(request, 'locations/index.html', { 'locations': locations })
+
+class LocationCreate(CreateView):
+    model = Location
+    fields = ['name', 'city', 'tag', 'description', 'birds']
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+        
