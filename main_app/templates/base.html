@@ -14,16 +14,16 @@
             <nav>
                 <ul>
                     {% if user.is_authenticated %}
-                        <li><a>About</a></li>
-                        <li><a>Locations</a></li>
+                        <li><a href="">About</a></li>
+                        <li><a href="{% url 'location-index' %}">Locations</a></li>
                         <li><a>My Reviews</a></li>
-                        <li><a>Add Location</a></li>
+                        <li><a href="{% url 'location-create' %}">Add Location</a></li>
                         <li><a>Add Review</a></li>
                         <li><button type="submit">Logout</button></li>
                     {% else %}
                         <li><a>About</a></li>
                         <li><a>Login</a></li>
-                        <li><a>Sign Up</a></li>
+                        <li><a href="{% url 'signup' %}">Sign Up</a></li>
                     {% endif %}
                 </ul>
             </nav>
