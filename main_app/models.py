@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django.contrib.auth.models import User
 from django.contrib.postgres.fields import ArrayField
 
@@ -25,6 +26,10 @@ class Location(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse("location-detail", kwargs={"location_id": self.id})
+    
     
 
 
