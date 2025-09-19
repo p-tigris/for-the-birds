@@ -1,9 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-
-<h1>Add Review</h1>
-<form action="{% url 'create-review' location.id %}" method="post">
+{% if review %}
+    <h1>Edit Review</h1>
+{% else %}
+    <h1>Add Review</h1>
+{% endif %}
+<form action="" method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Submit</button>

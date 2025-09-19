@@ -24,7 +24,7 @@
         {{ review.text }}
     </div>
     {% if review.user.id == user.id %}
-        <a href="">Edit Review</a>
+        <a href="{% url 'update-review' location.id review.id %}">Edit Review</a>
         <a href="">Delete Review</a>
     {% endif %}
 {% endfor %}

@@ -6,7 +6,7 @@ from django.contrib.auth.forms import UserCreationForm
 
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
-from .models import Location
+from .models import Location, Review
 from .forms import ReviewForm
 
 # Create your views here.
@@ -71,4 +71,8 @@ def create_review(request, location_id):
 
     return render(request, 'main_app/review_form.html', { 'form': form, 'location': location })
 
+class ReviewUpdate(UpdateView):
+    model = Review
+    fields = ['title', 'rating', 'date', 'text']
+    
 
