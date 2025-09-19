@@ -42,4 +42,12 @@ class LocationCreate(CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
+
+class LocationUpdate(UpdateView):
+    model = Location
+    fields = ['tag', 'description', 'birds']
+
+class LocationDelete(DeleteView):
+    model = Location
+    success_url = '/locations/'
         

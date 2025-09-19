@@ -10,4 +10,7 @@
 <p>{{ location.description }}</p>
 
 <p>{{ location.birds }}</p>
+
+<a href="{% url 'location-update' location.id %}">Edit</a>
+<a href="{% url 'location-delete' location.id %}">Delete</a>
 {% endblock %}

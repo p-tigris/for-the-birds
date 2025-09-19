@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Delete Location?</h1>
+
+<h2>Are you sure you want to delete {{ location.name }}?</h2>
+
+<form action="" method="post">
+    {% csrf_token %}
+    <a href="{% url 'location-detail' location.id %}">Cancel</a>
+    <button type="submit">Delete Location</button>
+</form>
+{% endblock %}
