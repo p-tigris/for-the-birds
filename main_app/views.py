@@ -4,6 +4,8 @@ from django.contrib.auth.views import LoginView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 
+from django.urls import reverse_lazy
+
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from .models import Location, Review
@@ -75,4 +77,7 @@ class ReviewUpdate(UpdateView):
     model = Review
     fields = ['title', 'rating', 'date', 'text']
     
+class ReviewDelete(DeleteView):
+    model = Review
+    success_url = '/locations/'
 
