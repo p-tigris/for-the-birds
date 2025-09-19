@@ -7,6 +7,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from .models import Location
+from .forms import ReviewForm
 
 # Create your views here.
 class Home(LoginView):
@@ -51,3 +52,23 @@ class LocationDelete(DeleteView):
     model = Location
     success_url = '/locations/'
         
+def create_review(request, location_id):
+    location = Location.objects.get(id=location_id)
+
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            review = form.save(commit=False)
+
+            review.location = location
+            review.user = request.user
+
+            review.save()
+
+            return redirect('location-detail', location_id=location_id)
+    else:
+        form = ReviewForm()
+
+    return render(request, 'main_app/review_form.html', { 'form': form, 'location': location })
+
+

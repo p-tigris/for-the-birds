@@ -36,7 +36,7 @@ class Location(models.Model):
 class Review(models.Model):
     title = models.CharField(max_length=50)
     rating = models.FloatField(max_length=1, choices=RATINGS, default=RATINGS[0][0], null=True)
-    date = models.DateField(null=True)
+    date = models.DateField('Date Visited', null=True)
     text = models.TextField(max_length=800)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
