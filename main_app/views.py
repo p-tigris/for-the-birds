@@ -30,6 +30,11 @@ def locations_index(request):
 
     return render(request, 'locations/index.html', { 'locations': locations })
 
+def location_detail(request, location_id):
+    location = Location.objects.get(id=location_id)
+
+    return render(request, 'locations/detail.html', { 'location': location })
+
 class LocationCreate(CreateView):
     model = Location
     fields = ['name', 'city', 'tag', 'description', 'birds']

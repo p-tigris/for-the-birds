@@ -2,7 +2,9 @@
 {% block content %}
     <h1>Locations</h1>
     {% for location in locations %}
-    <h2>{{ location.name }}</h2>
-    <h2>{{ location.city }}</h2>
+        <a href="{% url 'location-detail' location.id %}">
+            <h2>{{ location.name }}</h2>
+            <h2>{{ location.city }}</h2>
+        </a>
     {% endfor %}
 {% endblock %}
