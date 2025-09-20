@@ -53,6 +53,11 @@ class LocationUpdate(UpdateView):
 class LocationDelete(DeleteView):
     model = Location
     success_url = '/locations/'
+
+def review_index(request):
+    reviews = Review.objects.filter(user=request.user)
+
+    return render(request, 'main_app/my_reviews.html', { 'reviews': reviews })
         
 def create_review(request, location_id):
     location = Location.objects.get(id=location_id)

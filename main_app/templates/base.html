@@ -16,9 +16,14 @@
                     {% if user.is_authenticated %}
                         <li><a href="">About</a></li>
                         <li><a href="{% url 'location-index' %}">Locations</a></li>
-                        <li><a href="">My Reviews</a></li>
+                        <li><a href="{% url 'review-index' %}">My Reviews</a></li>
                         <li><a href="{% url 'location-create' %}">Add Location</a></li>
-                        <li><button type="submit">Logout</button></li>
+                        <li>    
+                            <form action="{% url 'logout' %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit">Logout</button>
+                            </form>
+                        </li>
                     {% else %}
                         <li><a href="">About</a></li>
                         <li><a>Login</a></li>
