@@ -14,7 +14,7 @@
             <nav>
                 <ul>
                     {% if user.is_authenticated %}
-                        <li><a href="">About</a></li>
+                        <li><a href="{% url 'about' %}">About</a></li>
                         <li><a href="{% url 'location-index' %}">Locations</a></li>
                         <li><a href="{% url 'review-index' %}">My Reviews</a></li>
                         <li><a href="{% url 'location-create' %}">Add Location</a></li>
@@ -25,8 +25,8 @@
                             </form>
                         </li>
                     {% else %}
-                        <li><a href="">About</a></li>
-                        <li><a>Login</a></li>
+                        <li><a href="{% url 'about' %}">About</a></li>
+                        <li><a href="{% url 'home' %}">Login</a></li>
                         <li><a href="{% url 'signup' %}">Sign Up</a></li>
                     {% endif %}
                 </ul>
