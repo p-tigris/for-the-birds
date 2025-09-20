@@ -79,5 +79,13 @@ class ReviewUpdate(UpdateView):
     
 class ReviewDelete(DeleteView):
     model = Review
-    success_url = '/locations/'
+    
+    def get_success_url(self):
+        location_id = self.object.location.id
+        return reverse_lazy('location-detail', kwargs={ 'location_id': location_id })
+
+    def get_context_data(self, **kwargs):
+            context = super().get_context_data(**kwargs)
+            context['location'] = self.object.location
+            return context
 

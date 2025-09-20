@@ -16,12 +16,11 @@
                     {% if user.is_authenticated %}
                         <li><a href="">About</a></li>
                         <li><a href="{% url 'location-index' %}">Locations</a></li>
-                        <li><a>My Reviews</a></li>
+                        <li><a href="">My Reviews</a></li>
                         <li><a href="{% url 'location-create' %}">Add Location</a></li>
-                        <li><a>Add Review</a></li>
                         <li><button type="submit">Logout</button></li>
                     {% else %}
-                        <li><a>About</a></li>
+                        <li><a href="">About</a></li>
                         <li><a>Login</a></li>
                         <li><a href="{% url 'signup' %}">Sign Up</a></li>
                     {% endif %}
