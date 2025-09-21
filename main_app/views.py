@@ -3,6 +3,8 @@ from django.contrib.auth.views import LoginView
 
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from django.urls import reverse_lazy
 
@@ -31,17 +33,21 @@ def signup(request):
     form = UserCreationForm()
     return render(request, 'signup.html', { 'form': form, 'error_message': error_message })
 
+@login_required
 def locations_index(request):
     locations = Location.objects.all()
 
     return render(request, 'locations/index.html', { 'locations': locations })
 
+@login_required
 def location_detail(request, location_id):
     location = Location.objects.get(id=location_id)
 
-    return render(request, 'locations/detail.html', { 'location': location })
+    reviewed = Review.objects.filter(location=location, user=request.user).exists()
 
-class LocationCreate(CreateView):
+    return render(request, 'locations/detail.html', { 'location': location, 'reviewed': reviewed })
+
+class LocationCreate(LoginRequiredMixin, CreateView):
     model = Location
     fields = ['name', 'city', 'tag', 'image', 'description', 'birds']
 
@@ -49,19 +55,21 @@ class LocationCreate(CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
-class LocationUpdate(UpdateView):
+class LocationUpdate(LoginRequiredMixin, UpdateView):
     model = Location
     fields = ['tag', 'image', 'description', 'birds']
 
-class LocationDelete(DeleteView):
+class LocationDelete(LoginRequiredMixin, DeleteView):
     model = Location
     success_url = '/locations/'
 
+@login_required
 def review_index(request):
     reviews = Review.objects.filter(user=request.user)
 
     return render(request, 'main_app/my_reviews.html', { 'reviews': reviews })
-        
+
+@login_required
 def create_review(request, location_id):
     location = Location.objects.get(id=location_id)
 
@@ -81,11 +89,11 @@ def create_review(request, location_id):
 
     return render(request, 'main_app/review_form.html', { 'form': form, 'location': location })
 
-class ReviewUpdate(UpdateView):
+class ReviewUpdate(LoginRequiredMixin, UpdateView):
     model = Review
     fields = ['title', 'rating', 'date', 'text']
     
-class ReviewDelete(DeleteView):
+class ReviewDelete(LoginRequiredMixin, DeleteView):
     model = Review
     
     def get_success_url(self):

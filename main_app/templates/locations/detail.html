@@ -16,7 +16,7 @@
 <a href="{% url 'location-update' location.id %}">Edit</a>
 <a href="{% url 'location-delete' location.id %}">Delete</a>
 
-<h1>Reviews</h1><a href="{% url 'create-review' location.id %}">(Add a Review)</a>
+<h1>Reviews</h1>{% if not reviewed %}<a href="{% url 'create-review' location.id %}">(Add a Review)</a>{% endif %}
 {% for review in location.review_set.all %}
     <div>
         By {{ review.user }}
