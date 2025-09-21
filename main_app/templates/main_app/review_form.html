@@ -6,10 +6,14 @@
 {% else %}
     <h1>Add Review</h1>
 {% endif %}
+{% if not reviewed %}
 <form action="" method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Submit</button>
 </form>
+{% else %}
+<h2>You have already reviewed this location.</h2>
+{% endif %}
 
 {% endblock %}

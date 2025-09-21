@@ -87,7 +87,9 @@ def create_review(request, location_id):
     else:
         form = ReviewForm()
 
-    return render(request, 'main_app/review_form.html', { 'form': form, 'location': location })
+    reviewed = Review.objects.filter(location=location, user=request.user).exists()
+
+    return render(request, 'main_app/review_form.html', { 'form': form, 'location': location, 'reviewed': reviewed })
 
 class ReviewUpdate(LoginRequiredMixin, UpdateView):
     model = Review
