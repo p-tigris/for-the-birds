@@ -15,11 +15,22 @@ RATINGS = (
     (5, '5 stars')
 )
 
+TAGS = (
+    ('City Park', 'City Park'),
+    ('State Park', 'State Park'),
+    ('National Park', 'National Park'),
+    ('Wildlife Refuge', 'Wildlife Refuge'),
+    ('Zoo', 'Zoo'),
+    ('Aviary', 'Aviary'),
+    ('Other', 'Other')
+)
+
 # Create your models here.
 class Location(models.Model):
     name = models.CharField(max_length=50)
     city = models.CharField(max_length=50)
-    tag = models.CharField(max_length=50)
+    tag = models.CharField(max_length=50, choices=TAGS, default=TAGS[0][0])
+    image = models.URLField(max_length=200, blank=True, null=True)
     description = models.TextField(max_length=800)
     birds = ArrayField(models.CharField(max_length=50), default=list, size=None)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -35,8 +46,8 @@ class Location(models.Model):
 
 class Review(models.Model):
     title = models.CharField(max_length=50)
-    rating = models.FloatField(max_length=1, choices=RATINGS, default=RATINGS[0][0], null=True)
-    date = models.DateField('Date Visited', null=True)
+    rating = models.FloatField(max_length=1, choices=RATINGS, default=RATINGS[0][0], blank=True, null=True)
+    date = models.DateField('Date Visited', blank=True, null=True)
     text = models.TextField(max_length=800)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 

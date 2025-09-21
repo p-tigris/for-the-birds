@@ -7,6 +7,8 @@
 
 <p>{{ location.tag }}</p>
 
+<img src="{% if location.image %}{{ location.image }}{% else %} https://i.imgur.com/UhPfywf.jpeg {% endif %}" alt="Location Image" height="300" width="300" />
+
 <p>{{ location.description }}</p>
 
 <p>{{ location.birds }}</p>
@@ -19,7 +21,7 @@
     <div>
         By {{ review.user }}
         {{ review.title }}
-        {{ review.rating }} Stars
+        {{ review.rating }}/5.0
         {{ review.date }}
         {{ review.text }}
     </div>

@@ -43,7 +43,7 @@ def location_detail(request, location_id):
 
 class LocationCreate(CreateView):
     model = Location
-    fields = ['name', 'city', 'tag', 'description', 'birds']
+    fields = ['name', 'city', 'tag', 'image', 'description', 'birds']
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -51,7 +51,7 @@ class LocationCreate(CreateView):
 
 class LocationUpdate(UpdateView):
     model = Location
-    fields = ['tag', 'description', 'birds']
+    fields = ['tag', 'image', 'description', 'birds']
 
 class LocationDelete(DeleteView):
     model = Location
