@@ -35,17 +35,6 @@ html, body {
     height: auto;
 }
 
-.form-container p {
-    font-size: 24px;
-}
-
-.form-container input, .form-container table #id_tag, .form-container table textarea {
-    box-shadow: 0 5px 5px gray;
-    border: none;
-    border-radius: 8px;
-    font-size: 24px;
-    padding: 5px;
-}
 
 .form-container button, form a {
     margin: 0 1rem;
@@ -63,14 +52,6 @@ html, body {
     font-size: 24px;
 }
 
-.form-container table th {
-    font-size: 24px;
-    padding-bottom: 15px;
-}
-
-.form-container table td {
-    padding-bottom: 15px;
-}
 
 form a {
     text-decoration: none;
@@ -82,9 +63,6 @@ form a {
     display: flex;
 }
 
-#id_image, #id_birds {
-    margin-bottom: 10px;
-}
 
 h1 {
     font-family: 'Birdgo', 'Courier New', Courier, monospace;
