@@ -1,13 +1,17 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% load static %} {% block head %}
+<link rel="stylesheet" href="{% static 'css/locations/delete.css' %}" />
+{% endblock %} {% block content %}
+<div class="delete-form-container">
+    <div class="form-container">
+        <h1>Delete Location?</h1>
 
-{% block content %}
-<h1>Delete Location?</h1>
+        <h2>Are you sure you want to delete {{ location.name }}?</h2>
 
-<h2>Are you sure you want to delete {{ location.name }}?</h2>
-
-<form action="" method="post">
-    {% csrf_token %}
-    <a href="{% url 'location-detail' location.id %}">Cancel</a>
-    <button type="submit">Delete Location</button>
-</form>
+        <form action="" method="post" class="form-actions">
+            {% csrf_token %}
+            <a href="{% url 'location-detail' location.id %}">Cancel</a>
+            <button type="submit">Delete Location</button>
+        </form>
+    </div>
+</div>
 {% endblock %}
