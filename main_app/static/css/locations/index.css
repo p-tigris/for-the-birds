@@ -13,7 +13,7 @@ body {
 .locations-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    gap: 1rem;
+    gap: 2rem;
 }
 
 .location-container {
@@ -59,6 +59,6 @@ a {
 
 .location-city {
     margin: 0 auto;
-    color: black;
+    color: #008b8b;
     font-family: 'Segoe UI','Courier New', Courier, monospace;
 }
