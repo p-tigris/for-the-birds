@@ -1,0 +1,63 @@
+@import url('https://fonts.cdnfonts.com/css/birdgo');
+
+body {
+    margin: 0;
+}
+
+.navbar-container {
+    background-color: #f5f5f5;
+    display: flex;
+}
+
+.app-logo {
+    border: 1px black solid;
+    border-radius: 10px;
+}
+
+.links-container {
+    list-style-type: none;  
+    display: flex;
+    margin-left: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.links-container li {
+    margin: 0 1rem;
+    padding: auto;
+    background-color: #f5f5f5;
+    border: 1px #d3d3d3 outset;
+    border-radius: 10px;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    box-shadow: 5px 5px 5px gray;
+    font-family: 'Birdgo', 'Courier New', Courier, monospace;
+}
+
+.links-container p {
+    font-family: 'Birdgo', 'Courier New', Courier, monospace;
+    font-size: 150%;
+    text-align: left;
+    padding-right: 7rem;
+}
+
+.links-container li:hover {
+    background-color: #96ded1;
+}
+
+.links-container a {
+    text-decoration: none;
+    font-size: 150%;
+    color: #008b8b;
+}
+
+#logout-btn {
+    background-color: transparent;
+    border: none;
+    font-size: 150%;
+    color: #008b8b;
+    cursor: pointer;
+    font-family: 'Birdgo', 'Courier New', Courier, monospace;
+}

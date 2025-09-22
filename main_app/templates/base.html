@@ -1,33 +1,41 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="shortcut icon" type="image/png" href="" />
+        <link rel="shortcut icon" type="image/png" href="{% static 'images/ftb-app-logo.jpg' %}" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="{% static 'css/base.css' %}" />
         <title>For the Birds</title>
         {% block head %}
         {% endblock %}
     </head>
     <body>
         <header>
-            <nav>
-                <ul>
+            <nav class="navbar-container">
+                <a href="/">
+                    <img src="{% static 'images/ftb-app-logo.jpg' %}" alt="App Logo" height="100" width="100" class="app-logo"/>
+                </a>
+                <ul class="links-container">
                     {% if user.is_authenticated %}
-                        <li><a href="{% url 'about' %}">About</a></li>
-                        <li><a href="{% url 'location-index' %}">Locations</a></li>
-                        <li><a href="{% url 'review-index' %}">My Reviews</a></li>
-                        <li><a href="{% url 'location-create' %}">Add Location</a></li>
+                        <p>Welcome, {{ user }}</p>
+                        <li><a href="{% url 'about' %}"><i class="bi-info-circle"></i> About</a></li>
+                        <li><a href="{% url 'location-index' %}"><i class="bi-geo-fill"></i> Locations</a></li>
+                        <li><a href="{% url 'review-index' %}"><i class="bi-star-fill"></i> My Reviews</a></li>
+                        <li><a href="{% url 'location-create' %}"><i class="bi-geo-alt"></i> Add Location</a></li>
                         <li>    
                             <form action="{% url 'logout' %}" method="post">
                                 {% csrf_token %}
-                                <button type="submit">Logout</button>
+                                <button type="submit" id="logout-btn"><i class="bi-box-arrow-right"></i> Logout</button>
                             </form>
                         </li>
                     {% else %}
-                        <li><a href="{% url 'about' %}">About</a></li>
-                        <li><a href="{% url 'home' %}">Login</a></li>
-                        <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                        <li><a href="{% url 'about' %}"><i class="bi-info-circle"></i> About</a></li>
+                        <li><a href="{% url 'home' %}"><i class="bi-key"></i> Login</a></li>
+                        <li><a href="{% url 'signup' %}"><i class="bi-pencil-square"></i> Sign Up</a></li>
                     {% endif %}
                 </ul>
             </nav>
