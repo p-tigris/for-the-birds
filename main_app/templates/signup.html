@@ -1,18 +1,18 @@
-{% extends "base.html" %}
-{% block content %}
-<h1>Sign Up</h1>
+{% extends "base.html" %} {% load static %} {% block head %}
+<link rel="stylesheet" href="{% static 'css/signup.css' %}" />
+{% endblock %} {% block content %}
+<div class="signup-container">
 
-{% if error_message %}
-    <p>{{ error_message }}</p>
-{% endif %}
-
-
-<form action="" method="post">
-    {% csrf_token %}
-    <table>
-        {{ form.as_table }}
-    </table>
-    <button type="submit">Submit</button>
-</form>
-
+    <form action="" method="post" class="form-container">
+        {% if error_message %}
+            <p id="error-message">{{ error_message }}</p>
+        {% endif %}
+        <h1>Sign Up</h1>
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <button type="submit">Submit</button>
+    </form>
+</div>
 {% endblock %}
