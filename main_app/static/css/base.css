@@ -44,7 +44,7 @@ body {
 }
 
 .links-container li:hover {
-    background-color: #96ded1;
+    background-color: rgba(150, 222, 209, 0.3);
 }
 
 .links-container a {
