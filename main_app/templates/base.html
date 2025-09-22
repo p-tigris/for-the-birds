@@ -24,8 +24,8 @@
                         <p>Welcome, {{ user }}</p>
                         <li><a href="{% url 'about' %}"><i class="bi-info-circle"></i> About</a></li>
                         <li><a href="{% url 'location-index' %}"><i class="bi-geo-fill"></i> Locations</a></li>
-                        <li><a href="{% url 'review-index' %}"><i class="bi-star-fill"></i> My Reviews</a></li>
                         <li><a href="{% url 'location-create' %}"><i class="bi-geo-alt"></i> Add Location</a></li>
+                        <li><a href="{% url 'review-index' %}"><i class="bi-star-fill"></i> My Reviews</a></li>
                         <li>    
                             <form action="{% url 'logout' %}" method="post">
                                 {% csrf_token %}

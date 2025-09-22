@@ -1,10 +1,33 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "base.html" %} {% load static %} {% block head %}
+<link rel="stylesheet" href="{% static 'css/locations/index.css' %}" />
+{% endblock %} {% block content %}
+<div class="page-container">
     <h1>Locations</h1>
-    {% for location in locations %}
-        <a href="{% url 'location-detail' location.id %}">
-            <h2>{{ location.name }}</h2>
-            <h2>{{ location.city }}</h2>
-        </a>
-    {% endfor %}
+    <div class="locations-container">
+        {% for location in locations %}
+            <div class="location-container">
+                <a href="{% url 'location-detail' location.id %}">
+                    <div class="location-name">
+                        <h2>{{ location.name }}</h2>
+                    </div>
+                    <div class="location-image">
+                        <img 
+                            src="{%if location.image %}
+                                    {{ location.image }}
+                                {% else %}
+                                    {% static 'images/ftb-app-logo.jpg' %}
+                                {% endif %}" 
+                            alt="Location Image" 
+                            width="200" 
+                            height="200"
+                        />
+                    </div>
+                    <div class="location-city">
+                        <h2>{{ location.city }}</h2>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}
