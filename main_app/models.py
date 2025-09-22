@@ -55,6 +55,9 @@ class Review(models.Model):
 
     def __str__(self):
         return self.title
+
+    class Meta:
+        ordering = ['-date']
     
     def get_absolute_url(self):
         return reverse("location-detail", kwargs={"location_id": self.location.id})

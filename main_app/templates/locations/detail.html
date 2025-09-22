@@ -1,33 +1,101 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% load static %} {% block head %}
+<link rel="stylesheet" href="{% static 'css/locations/detail.css' %}" />
+{% endblock %} {% block content %}
+<h1 id="location-name">{{ location.name }}</h1>
+<div class="page-container">
+    <div class="location-wrapper">
+        <div class="location-container">
+            <img 
+                src="{% if location.image %}{{ location.image }}{% else %} {% static 'images/ftb-app-logo.jpg' %} {% endif %}" 
+                alt="Location Image" 
+                height="500" 
+                width="500" 
+                class="location-image"
+            />
+            <div id="location-info">
+                <h2>{{ location.city }}</h2>
 
-{% block content %}
-<h1>{{ location.name }}</h1>
+                <p
+                    id="location-tag" 
+                    class="{% if location.tag == 'City Park' %}
+                                city-park
+                            {% elif location.tag == 'State Park' %}
+                                state-park
+                            {% elif location.tag == 'National Park' %}
+                                national-park
+                            {% elif location.tag == 'Wildlife Refuge' %}
+                                wildlife-refuge
+                            {% elif location.tag == 'Zoo' %}
+                                zoo
+                            {% elif location.tag == 'Aviary' %}
+                                aviary
+                            {% elif location.tag == 'Other' %}
+                                other
+                            {%endif%}"
+                >
+                    {{ location.tag }}
+                </p>
 
-<h2>{{ location.city }}</h2>
+                <p>{{ location.description }}</p>
 
-<p>{{ location.tag }}</p>
-
-<img src="{% if location.image %}{{ location.image }}{% else %} https://i.imgur.com/UhPfywf.jpeg {% endif %}" alt="Location Image" height="300" width="300" />
-
-<p>{{ location.description }}</p>
-
-<p>{{ location.birds }}</p>
-
-<a href="{% url 'location-update' location.id %}">Edit</a>
-<a href="{% url 'location-delete' location.id %}">Delete</a>
-
-<h1>Reviews</h1>{% if not reviewed %}<a href="{% url 'create-review' location.id %}">(Add a Review)</a>{% endif %}
-{% for review in location.review_set.all %}
-    <div>
-        By {{ review.user }}
-        {{ review.title }}
-        {{ review.rating }}/5.0
-        {{ review.date }}
-        {{ review.text }}
+                <p id="tag-text">Birds Found There:</p>
+                <div class="bird-tags">
+                    {% for bird in location.birds %}
+                        <p class="bird-tag">{{ bird }}</p>
+                    {% endfor %}
+                </div>
+                <div class="edit-delete-container">
+                    {% if location.user.id == user.id %}
+                        <a href="{% url 'location-update' location.id %}" class="edit-delete-links">Edit</a>
+                        <a href="{% url 'location-delete' location.id %}" class="edit-delete-links">Delete</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
     </div>
-    {% if review.user.id == user.id %}
-        <a href="{% url 'update-review' location.id review.id %}">Edit</a>
-        <a href="{% url 'delete-review' location.id review.id %}">Delete</a>
-    {% endif %}
-{% endfor %}
+</div>
+<h1 id="reviews-title">Reviews</h1>
+<div class="review-container">
+    {% if not reviewed %}<a href="{% url 'create-review' location.id %}" id="review-add">Add a Review</a>{% endif %}
+    <div class="review-wrapper">
+        {% for review in location.review_set.all %}
+            <div class="review">
+                <img 
+                    src="{% if review.rating == 5.0 %} 
+                            {% static 'images/five-stars.png' %}
+                        {% elif review.rating == 4.5 %} 
+                            {% static 'images/four-half-stars.png' %}
+                        {% elif review.rating == 4.0 %} 
+                            {% static 'images/four-stars.png' %}
+                        {% elif review.rating == 3.5 %} 
+                            {% static 'images/three-half-stars.png' %}
+                        {% elif review.rating == 3.0 %} 
+                            {% static 'images/three-stars.png' %}
+                        {% elif review.rating == 2.5 %} 
+                            {% static 'images/two-half-stars.png' %}
+                        {% elif review.rating == 2.0 %} 
+                            {% static 'images/two-stars.png' %}
+                        {% elif review.rating == 1.5 %} 
+                            {% static 'images/one-half-stars.png' %}
+                        {% elif review.rating == 1.0 %} 
+                            {% static 'images/one-stars.png' %} 
+                        {% endif %}"
+                    alt="User Rating" 
+                    height="25" 
+                    width="100"
+                />
+                <p class="bold-text">{{ review.title }}</p>
+                <hr>
+                <p>{{ review.text }}</p>
+                <div class="user-elements">
+                    <p class="review-basic">By <span class="bold-text">{{ review.user }}</span> on {{ review.date }}</p>
+                    {% if review.user.id == user.id %}
+                        <a href="{% url 'update-review' location.id review.id %}" class="edit-delete-review">Edit Review</a>
+                        <a href="{% url 'delete-review' location.id review.id %}" class="edit-delete-review">Delete Review</a>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}
