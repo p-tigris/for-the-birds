@@ -1,0 +1,82 @@
+@import url('https://fonts.cdnfonts.com/css/birdgo');
+
+html, body {
+    height: 100%;
+    padding-bottom: 385px;
+}
+
+.location-form-container {
+    background-image: url('../images/location-form-image.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 20px;
+    margin: 20px auto;
+    padding: 0 5%;
+    max-width: 85%;
+    min-height: calc(150vh - 130px); 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(255,255,255,0.8);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+    border: 1px gray solid;
+    border-radius: 10px;
+    gap: 1rem;
+    padding: 2rem;
+    font-family: 'Birdgo', 'Courier New', Courier, monospace;
+    width: 800px;
+    height: 800px;
+}
+
+.form-container p {
+    font-size: 24px;
+}
+
+.form-container input, .form-container table #id_tag, .form-container table textarea {
+    box-shadow: 0 5px 5px gray;
+    border: none;
+    border-radius: 8px;
+    font-size: 24px;
+    padding: 5px;
+}
+
+.form-container button {
+    margin: 0 1rem;
+    padding: auto;
+    background-color: #f5f5f5;
+    border: 1px #d3d3d3 outset;
+    border-radius: 10px;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    color: #008b8b;
+    box-shadow: 5px 5px 5px gray;
+    font-family: 'Birdgo', 'Courier New', Courier, monospace;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.form-container table th {
+    font-size: 24px;
+    padding-bottom: 15px;
+}
+
+.form-container table td {
+    padding-bottom: 15px;
+}
+
+#id_image, #id_birds {
+    margin-bottom: 10px;
+}
+
+button:hover {
+    background-color: rgba(150, 222, 209, 0.3);
+}

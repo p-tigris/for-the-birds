@@ -30,9 +30,9 @@ class Location(models.Model):
     name = models.CharField(max_length=50)
     city = models.CharField(max_length=50)
     tag = models.CharField(max_length=50, choices=TAGS, default=TAGS[0][0])
-    image = models.URLField(max_length=200, blank=True, null=True)
+    image = models.URLField(max_length=200, blank=True, null=True, help_text="(Please insert image URL of location)")
     description = models.TextField(max_length=800)
-    birds = ArrayField(models.CharField(max_length=50), default=list, size=None)
+    birds = ArrayField(models.CharField(max_length=50), default=list, size=None, help_text="(Include relevant bird species; separate them by comma)")
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
