@@ -1,13 +1,40 @@
-{% extends "base.html" %}
-
-{% block content %}
-<h1>My Reviews</h1>
-{% for review in reviews %}
-    <div>
-        {{ review.title }}
-        {{ review.rating }} Stars
-        {{ review.date }}
-        {{ review.text }}
-    </div>
-{% endfor %}
+{% extends "base.html" %} {% load static %} {% block head %}
+<link rel="stylesheet" href="{% static 'css/reviews/my-reviews.css' %}" />
+{% endblock %} {% block content %}
+<div class="page-container">
+    <h1>My Reviews</h1>
+    {% for review in reviews %}
+        <div class="review-container">
+            <p id="review-location">{{ review.location }} on {{ review.date }}</p>
+            <p id="review-title">{{ review.title }}</p>
+            <img 
+                src="{% if review.rating == 5.0 %} 
+                        {% static 'images/five-stars.png' %}
+                    {% elif review.rating == 4.5 %} 
+                        {% static 'images/four-half-stars.png' %}
+                    {% elif review.rating == 4.0 %} 
+                        {% static 'images/four-stars.png' %}
+                    {% elif review.rating == 3.5 %} 
+                        {% static 'images/three-half-stars.png' %}
+                    {% elif review.rating == 3.0 %} 
+                        {% static 'images/three-stars.png' %}
+                    {% elif review.rating == 2.5 %} 
+                        {% static 'images/two-half-stars.png' %}
+                    {% elif review.rating == 2.0 %} 
+                        {% static 'images/two-stars.png' %}
+                    {% elif review.rating == 1.5 %} 
+                        {% static 'images/one-half-stars.png' %}
+                    {% elif review.rating == 1.0 %} 
+                        {% static 'images/one-stars.png' %} 
+                    {% endif %}"
+                alt="User Rating" 
+                height="25" 
+                width="100"
+            />
+            <div id="text-container">
+                <p>{{ review.text }}</p>
+            </div>
+        </div>
+    {% endfor %}
+</div>
 {% endblock %}
