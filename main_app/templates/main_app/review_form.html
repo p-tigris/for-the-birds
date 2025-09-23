@@ -1,19 +1,23 @@
-{% extends "base.html" %}
-
-{% block content %}
-{% if review %}
-    <h1>Edit Review</h1>
-{% else %}
-    <h1>Add Review</h1>
-{% endif %}
-{% if not reviewed %}
-<form action="" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Submit</button>
-</form>
-{% else %}
-<h2>You have already reviewed this location.</h2>
-{% endif %}
-
+{% extends "base.html" %} {% load static %} {% block head %}
+<link rel="stylesheet" href="{% static 'css/reviews/form.css' %}" />
+{% endblock %} {% block content %}
+<div class="review-form-container">
+    {% if not reviewed %}
+    <form action="" method="post" class="form-container">
+        {% if review %}
+            <h1>Edit Review</h1>
+        {% else %}
+            <h1>Add Review</h1>
+        {% endif %}
+        {% csrf_token %}
+        {{ form.as_table }}
+        <button type="submit">Submit</button>
+    </form>
+    {% else %}
+    <div class="error-msg">
+        <h2>You have already reviewed this location.</h2>
+        <a href="{% url 'location-detail' location.id %}">Go Back</a>
+    </div>
+    {% endif %}
+</div>
 {% endblock %}

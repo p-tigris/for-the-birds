@@ -26,6 +26,8 @@
                         {% static 'images/one-half-stars.png' %}
                     {% elif review.rating == 1.0 %} 
                         {% static 'images/one-stars.png' %} 
+                    {% else %}
+                        {% static 'images/no-rating.png' %}
                     {% endif %}"
                 alt="User Rating" 
                 height="25" 
