@@ -20,6 +20,7 @@ body {
 
 .location-container {
     display: flex;
+    margin-left: 1rem;
 }
 
 #location-info {
