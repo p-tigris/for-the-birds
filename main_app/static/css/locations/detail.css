@@ -49,6 +49,7 @@ body {
     margin: 0 0 1rem 0;
     font-family: 'Segoe UI', 'Courier New', Courier, monospace;
     font-weight: bold;
+    box-shadow: 5px 5px 5px gray;
 }
 
 #tag-text, .bold-text {
@@ -184,4 +185,5 @@ hr {
     padding: 5px;
     border-radius: 8px;
     font-weight: bold;
+    box-shadow: 5px 5px 5px gray;
 }
