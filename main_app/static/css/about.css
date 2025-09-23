@@ -29,3 +29,7 @@ html, body {
     border-radius: 20px;
     padding: 20px;
 }
+
+.title {
+    color: #008b8b;
+}

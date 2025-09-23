@@ -4,7 +4,6 @@
 <div class="home-container">
 
 {% if not user.is_authenticated %}
-
     <form action="{% url "home" %}" method="post" class="login-container">
         <h1>Login</h1>
         {% csrf_token %} {{ form.as_p }}

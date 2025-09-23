@@ -25,7 +25,6 @@ TAGS = (
     ('Other', 'Other')
 )
 
-# Create your models here.
 class Location(models.Model):
     name = models.CharField(max_length=50)
     city = models.CharField(max_length=50)

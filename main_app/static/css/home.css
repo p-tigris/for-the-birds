@@ -29,7 +29,7 @@ html, body {
     border: 1px gray solid;
     border-radius: 10px;
     padding: 2rem;
-    font-family: 'Birdgo', 'Courier New', Courier, monospace;
+    font-family: 'Birdgo', 'Segoe UI', 'Courier New', Courier, monospace;
     width: 450px;
     height: 325px;
 }
@@ -58,7 +58,7 @@ html, body {
     gap: 0.25rem;
     color: #008b8b;
     box-shadow: 5px 5px 5px gray;
-    font-family: 'Birdgo', 'Courier New', Courier, monospace;
+    font-family: 'Birdgo', 'Segoe UI', 'Courier New', Courier, monospace;
     cursor: pointer;
     font-size: 24px;
 }
@@ -75,5 +75,5 @@ h1 {
 #login-success-text {
     font-size: 36px;
     margin-left: 0;
-    font-family: 'Birdgo', 'Courier New', Courier, monospace;
+    font-family: 'Birdgo', 'Segoe UI', 'Courier New', Courier, monospace;
 }

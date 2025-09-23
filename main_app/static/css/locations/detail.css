@@ -77,7 +77,7 @@ body {
     align-items: center;
     gap: 0.25rem;
     box-shadow: 5px 5px 5px gray;
-    font-family: 'Birdgo', 'Courier New', Courier, monospace;
+    font-family: 'Birdgo', 'Segoe UI', 'Courier New', Courier, monospace;
 }
 
 .edit-delete-review {

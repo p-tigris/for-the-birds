@@ -2,7 +2,9 @@
 <link rel="stylesheet" href="{% static 'css/locations/delete.css' %}" />
 {% endblock %} {% block content %}
 <div class="delete-form-container">
+
     <div class="form-container">
+
         <h1>Delete Location?</h1>
 
         <h2>Are you sure you want to delete {{ location.name }}?</h2>
@@ -12,6 +14,8 @@
             <a href="{% url 'location-detail' location.id %}">Cancel</a>
             <button type="submit">Delete Location</button>
         </form>
+        
     </div>
+
 </div>
 {% endblock %}

@@ -47,7 +47,7 @@ html, body {
     align-items: center;
     color: #008b8b;
     box-shadow: 5px 5px 5px gray;
-    font-family: 'Birdgo', 'Courier New', Courier, monospace;
+    font-family: 'Birdgo', 'Segoe UI', 'Courier New', Courier, monospace;
     cursor: pointer;
     font-size: 24px;
 }
@@ -65,7 +65,7 @@ form a {
 
 
 h1 {
-    font-family: 'Birdgo', 'Courier New', Courier, monospace;
+    font-family: 'Birdgo', 'Segoe UI', 'Courier New', Courier, monospace;
 }
 
 button:hover {

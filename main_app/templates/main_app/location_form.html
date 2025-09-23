@@ -2,6 +2,7 @@
 <link rel="stylesheet" href="{% static 'css/form.css' %}" />
 {% endblock %} {% block content %}
 <div class="location-form-container">
+
     <form action="" method="post" class="form-container">
         {% if location %}
             <h1>Edit {{ location.name }}</h1>
@@ -14,5 +15,6 @@
         </table>
         <button type="submit">Submit</button>
     </form>
+    
 </div>
 {% endblock %}

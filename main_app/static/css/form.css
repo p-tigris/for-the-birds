@@ -31,7 +31,7 @@ html, body {
     border-radius: 10px;
     gap: 1rem;
     padding: 2rem;
-    font-family: 'Birdgo', 'Courier New', Courier, monospace;
+    font-family: 'Birdgo', 'Segoe UI', 'Courier New', Courier, monospace;
     width: 800px;
     height: 800px;
 }
@@ -59,7 +59,7 @@ html, body {
     align-items: center;
     color: #008b8b;
     box-shadow: 5px 5px 5px gray;
-    font-family: 'Birdgo', 'Courier New', Courier, monospace;
+    font-family: 'Birdgo', 'Segoe UI', 'Courier New', Courier, monospace;
     cursor: pointer;
     font-size: 24px;
 }
