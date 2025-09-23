@@ -33,7 +33,7 @@ html, body {
     padding: 2rem;
     font-family: 'Birdgo', 'Segoe UI', 'Courier New', Courier, monospace;
     width: 800px;
-    height: 800px;
+    height: auto;
 }
 
 .form-container p {
