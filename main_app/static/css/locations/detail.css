@@ -132,10 +132,10 @@ body {
 }
 
 hr {
-  height: 1px;
-  background-color: gray; 
-  border: none;
-  margin: 10px 0;
+    height: 1px;
+    background-color: gray; 
+    border: none;
+    margin: 10px 0;
 }
 
 .user-elements {
