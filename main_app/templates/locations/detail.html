@@ -91,10 +91,12 @@
                 <p>{{ review.text }}</p>
                 <div class="user-elements">
                     <p class="review-basic">By <span class="bold-text">{{ review.user }}</span> on {{ review.date }}</p>
-                    {% if review.user.id == user.id %}
-                        <a href="{% url 'update-review' location.id review.id %}" class="edit-delete-review">Edit Review</a>
-                        <a href="{% url 'delete-review' location.id review.id %}" class="edit-delete-review">Delete Review</a>
-                    {% endif %}
+                    <div class="edit-delete-review">
+                        {% if review.user.id == user.id %}
+                            <a href="{% url 'update-review' location.id review.id %}">Edit Review</a>
+                            <a href="{% url 'delete-review' location.id review.id %}">Delete Review</a>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
         {% endfor %}
